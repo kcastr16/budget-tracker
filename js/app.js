@@ -21,6 +21,7 @@ let expenseAmountElement = document.getElementById('expense-amount');
 function userIncome() {
     if (!checkIncomeInput()) {
         return;
+
     }
 
     let incomeName = incomeNameElement.value;
@@ -31,9 +32,10 @@ function userIncome() {
     incomeList.push(income);
     let incomeFloat = parseFloat(income.incomeAmount)
     incomeTotal = incomeFloat + incomeTotal;
-    console.log(incomeTotal);
+    //console.log(incomeTotal);
 
-    incomeTotalDisplay.textContent = `Your Income: $${incomeTotal.toFixed(2)}`;
+    incomeTotalDisplay.textContent = `Your Income: $${incomeTotal.toFixed(2)}`; //Adds incomeTotal to display in the HTML
+    //creates HTML elements to display income name, and amount.
     let incomeData = document.getElementById('income-container');
     const addIncomeElement = document.createElement('div');
     addIncomeElement.innerHTML= `
@@ -51,14 +53,14 @@ function userExpenses() {
         return;
     }
 
-    let expenseName = expenseNameElement.value;
-    let expenseAmount = expenseAmountElement.value;
+    let expenseName = expenseNameElement.value; //Gets user input
+    let expenseAmount = expenseAmountElement.value; // Gets user input
     let expense = new Expense (expenseName, expenseAmount); // Adds user value to Expense object
     let expenseTotalDisplay = document.getElementById('expense-display');
     expenseList.push(expense);
     let expenseFloat = parseFloat(expense.expenseAmount)
     expenseTotal = expenseFloat + expenseTotal;
-    console.log(expenseTotal);
+    //console.log(expenseTotal);
 
     let expenseData = document.getElementById('expense-container');
     const addExpenseElement = document.createElement('div');
@@ -72,17 +74,45 @@ function userExpenses() {
     displayTotal();
 }
 
+
+/* displaytotal {
+    total = incomeTotal - expenseTotal
+    totaldisplay = display total on display id in html
+} */
 function displayTotal() {
     let total = incomeTotal - expenseTotal;
     let totalDisplay = document.getElementById('total-display');
     totalDisplay.textContent = `Your Total: $${total.toFixed(2)}`;
 }
 
+
+//Validates user input for income. Even if edited with inspect, keeps user from adding values that are not appropriate.
 function checkIncomeInput() {
-   
-    if (incomeNameElement.value === '' || incomeAmountElement.value === '')  {
+    const validation = document.getElementById('validation-income');
+    const incNameValidation = document.getElementById('validation-inc_name');
+    if (incomeNameElement.value === '' || incomeAmountElement.value === '')  {  
+        validation.innerHTML = '';
+        incNameValidation.innerHTML = '';
+        const validationMsg = document.createElement('div');
+        const incNameValidationMsg = document.createElement('div');
+        if (incomeNameElement.value === '') {
+
+            validationMsg.innerHTML = `
+            <p>please input a name.</p> 
+            `
+            validation.appendChild(validationMsg);
+        } 
+        if (incomeAmountElement.value === '') {
+            incNameValidationMsg.innerHTML = `
+            <p>Please input a amount.</p>`
+
+            incNameValidation.appendChild(incNameValidationMsg);
+        }
+
         return false;
     } else {
+        validation.innerHTML = '';
+        incNameValidation.innerHTML = '';
         let parsedInput = parseFloat(incomeAmountElement.value);
         if (isNaN(parsedInput)) {
             return false;
@@ -92,8 +122,14 @@ function checkIncomeInput() {
 }
 
 function checkExpenseInput() {
-   
+    const validation = document.getElementById('validation-expense');
     if (expenseNameElement.value === '' || expenseAmountElement.value === '')  {
+        validation.innerHTML = '';
+        const validationMsg = document.createElement('div');
+        validationMsg.innerHTML = `
+        <p>please input a name</p> 
+        `
+        validation.appendChild(validationMsg);
         return false;
     } else {
         let parsedInput = parseFloat(expenseAmountElement.value);

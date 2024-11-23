@@ -3,6 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./js/app.js" type="module" defer></script> 
+    <link rel="stylesheet" href="./sass/styles.css">
     <title>Budget Buddy</title>
 </head>
 <body>
@@ -19,7 +20,13 @@
                 <h2 id="income-display" >Your Income: </h2>
                 <div class="income-input">
                     <input id="income-name" type="text" placeholder="Job, sales, etc">
+                    <div id="validation-income">
+                        <!--Name income validation-->
+                    </div>
                     <input id="income-amount" type="number" placeholder="Amount from Income">
+                    <div id="validation-inc_name">
+                        <!--Validation message-->
+                    </div>
                 </div>
                 <div id="income-submit">
                     <button type="button">Add Income</button>
@@ -32,6 +39,9 @@
                 <div class="expenses-input">
                     <input id="expense-name" type="text" placeholder="Rent, Gas, etc">
                     <input id="expense-amount" type="number" placeholder="Amount Spent">
+                    <div id="validation-expense">
+                        <!--Validation message-->
+                    </div>
                 </div>
                 <div id="expense-submit">
                     <button type="button">Add Expense</button>
