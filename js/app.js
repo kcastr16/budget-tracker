@@ -1,4 +1,5 @@
-import Expense from "./Expense.js";
+import Budget from "./budget.js";
+import Expense from "./expense.js";
 import Income from "./income.js";
 
 // EventListeners
@@ -6,8 +7,7 @@ let addIncome = document.getElementById('income-submit').addEventListener('click
 let addExpense = document.getElementById('expense-submit').addEventListener('click', userExpenses);
 
 // Variables
-let incomeList = [];
-let expenseList = [];
+let budget = new Budget([], [], 0);
 let incomeTotal = 0.0;
 let expenseTotal = 0.0;
 
@@ -21,15 +21,14 @@ let expenseAmountElement = document.getElementById('expense-amount');
 function userIncome() {
     if (!checkIncomeInput()) {
         return;
-
     }
 
     let incomeName = incomeNameElement.value;
-    let incomeAmount = incomeAmountElement.value;
-    let income = new Income (incomeName, incomeAmount); //Adds user value to Income object
+    let incomeAmount = parseFloat(incomeAmountElement.value);
+    let income = new Income(incomeName, incomeAmount); // Adds user value to Income object
+    budget.addIncome(income); // Adds income to the budget
+
     let incomeTotalDisplay = document.getElementById('income-display');
-    //adds income to inomeList array
-    incomeList.push(income);
     let incomeFloat = parseFloat(income.incomeAmount)
     incomeTotal = incomeFloat + incomeTotal;
     //console.log(incomeTotal);
@@ -38,39 +37,38 @@ function userIncome() {
     //creates HTML elements to display income name, and amount.
     let incomeData = document.getElementById('income-container');
     const addIncomeElement = document.createElement('div');
-    addIncomeElement.innerHTML= `
+    addIncomeElement.innerHTML = `
     <h2>${income.incomeName}</h2>
-    <p>$${incomeFloat.toFixed(2)}</p>
-    `    
-    incomeData.appendChild(addIncomeElement)
+    <p>$${incomeAmount.toFixed(2)}</p>
+    `;
+    incomeData.appendChild(addIncomeElement);
     displayTotal();
+
 }
 
 // Captures user input for expense name and expense amount
 function userExpenses() {
-
     if (!checkExpenseInput()) {
         return;
     }
 
-    let expenseName = expenseNameElement.value; //Gets user input
-    let expenseAmount = expenseAmountElement.value; // Gets user input
-    let expense = new Expense (expenseName, expenseAmount); // Adds user value to Expense object
+    let expenseName = expenseNameElement.value;
+    let expenseAmount = parseFloat(expenseAmountElement.value);
+    let expense = new Expense(expenseName, expenseAmount); // Adds user value to Expense object
+    budget.addExpense(expense); // Adds expense to the budget
+
     let expenseTotalDisplay = document.getElementById('expense-display');
-    expenseList.push(expense);
     let expenseFloat = parseFloat(expense.expenseAmount)
     expenseTotal = expenseFloat + expenseTotal;
-    //console.log(expenseTotal);
+    expenseTotalDisplay.textContent = `Your Expenses: $${expenseTotal.toFixed(2)}`;
 
     let expenseData = document.getElementById('expense-container');
     const addExpenseElement = document.createElement('div');
-    addExpenseElement.innerHTML= `
+    addExpenseElement.innerHTML = `
     <h2>${expense.expenseName}</h2>
-    <p>$${expenseFloat.toFixed(2)}</p>
-    `    
-    expenseData.appendChild(addExpenseElement)
-
-    expenseTotalDisplay.textContent = `Your Expenses: $${expenseTotal.toFixed(2)}`;
+    <p>$${expenseAmount.toFixed(2)}</p>
+    `;
+    expenseData.appendChild(addExpenseElement);
     displayTotal();
 }
 
@@ -79,12 +77,15 @@ function userExpenses() {
     total = incomeTotal - expenseTotal
     totaldisplay = display total on display id in html
 } */
-function displayTotal() {
-    let total = incomeTotal - expenseTotal;
-    let totalDisplay = document.getElementById('total-display');
-    totalDisplay.textContent = `Your Total: $${total.toFixed(2)}`;
-}
+    function displayTotal() {
+        budget.calculateBudget();
+        let totalDisplay = document.getElementById('total-display');
+        totalDisplay.textContent = `Your Total: $${budget.getTotal().toFixed(2)}`;
+    }
 
+
+
+//ALL THIS STUFF BELOW STAYS!!!
 
 //Validates user input for income. Even if edited with inspect, keeps user from adding values that are not appropriate.
 function checkIncomeInput() {

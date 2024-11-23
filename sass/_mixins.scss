@@ -1,0 +1,39 @@
+@mixin centerItems($direction) {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+@mixin boxBackground() {
+    background-color: #eeb59f;
+    border-radius: 5px;
+    padding: 100px;
+    margin: 20px;
+}
+
+@mixin inputStyle() {
+  border: 1px solid #ddd;
+  color: (0, 0, 0, 0.87);
+  padding: 10px;
+  border-radius: 25px;
+  transition: box-shadow 100ms;
+  outline-style: none;
+  &:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1),  
+    0 0 6px rgba(0, 0, 0, 0.1), 
+    0 0 7px rgba(0, 0, 0, 0.1),
+    0 0 8px rgba(0, 0, 0, 0.1), 
+    0 0 9px rgba(0, 0, 0, 0.1),  
+    0 0 10px rgba(0, 0, 0, 0.1), 
+    0 0 11px rgba(0, 0, 0, 0.1)
+
+  }
+}
+
+@mixin errorText() {
+    color: red;
+    background-color: rgba(255, 255, 255, 0.508);
+    border-radius: 5px;
+}
