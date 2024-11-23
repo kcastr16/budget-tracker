@@ -89,51 +89,79 @@ function displayTotal() {
 //Validates user input for income. Even if edited with inspect, keeps user from adding values that are not appropriate.
 function checkIncomeInput() {
     const validation = document.getElementById('validation-income');
-    const incNameValidation = document.getElementById('validation-inc_name');
+    const incNameValidation = document.getElementById('validation-inc_number');
+    validation.innerHTML = '';
+    incNameValidation.innerHTML = '';
+    const validationMsg = document.createElement('div');
+    const incNameValidationMsg = document.createElement('div');
+    
     if (incomeNameElement.value === '' || incomeAmountElement.value === '')  {  
-        validation.innerHTML = '';
-        incNameValidation.innerHTML = '';
-        const validationMsg = document.createElement('div');
-        const incNameValidationMsg = document.createElement('div');
         if (incomeNameElement.value === '') {
 
             validationMsg.innerHTML = `
-            <p>please input a name.</p> 
+            <p>Please input a name.</p> 
             `
             validation.appendChild(validationMsg);
         } 
         if (incomeAmountElement.value === '') {
             incNameValidationMsg.innerHTML = `
-            <p>Please input a amount.</p>`
+            <p>Please input a valid amount.</p>`
 
+            incNameValidation.appendChild(incNameValidationMsg);
+        } else if(parseFloat(incomeAmountElement.value) <= 0){
+            incNameValidationMsg.innerHTML = `<p>Please input a amount.</p>`
             incNameValidation.appendChild(incNameValidationMsg);
         }
 
         return false;
     } else {
-        validation.innerHTML = '';
-        incNameValidation.innerHTML = '';
         let parsedInput = parseFloat(incomeAmountElement.value);
-        if (isNaN(parsedInput)) {
+        if (isNaN(parsedInput)  || parsedInput <= 0) {
+            incNameValidationMsg.innerHTML = `<p>Please input a amount.</p>`
+            incNameValidation.appendChild(incNameValidationMsg);
             return false;
         }
         return true;
     }
 }
 
+
+// validates expense input for if empty, it will not let you add anything. 
 function checkExpenseInput() {
-    const validation = document.getElementById('validation-expense');
+    const expNameValidation = document.getElementById('validation-exp_name');
+    const expAmountValidation = document.getElementById('validation-expense');
+    expNameValidation.innerHTML = '';
+    expAmountValidation.innerHTML = '';
+    const expNameValidationMsg = document.createElement('div');
+    const expAmountValidationMsg = document.createElement('div');
+
     if (expenseNameElement.value === '' || expenseAmountElement.value === '')  {
-        validation.innerHTML = '';
-        const validationMsg = document.createElement('div');
-        validationMsg.innerHTML = `
-        <p>please input a name</p> 
-        `
-        validation.appendChild(validationMsg);
+        if (expenseNameElement.value === '') {
+
+            expNameValidationMsg.innerHTML = `
+            <p>Please input a name.</p> 
+            `
+            expNameValidation.appendChild(expNameValidationMsg);
+        } 
+        if (expenseAmountElement.value === '') {
+
+            expAmountValidationMsg.innerHTML = `
+            <p>Please input a valid amount.</p> 
+            `
+            expAmountValidation.appendChild(expAmountValidationMsg);
+        } else if (parseFloat(expenseAmountElement.value) <= 0){
+            expAmountValidationMsg.innerHTML = `<p>Please input a valid amount.</p>`
+            expAmountValidation.appendChild(expAmountValidationMsg);
+        }
+
         return false;
     } else {
         let parsedInput = parseFloat(expenseAmountElement.value);
-        if (isNaN(parsedInput)) {
+        if (isNaN(parsedInput) || parseFloat(expenseAmountElement.value) <= 0 ) {
+            expAmountValidationMsg.innerHTML = `
+            <p>Please input a Valid Amount.</p> 
+            `
+            expAmountValidation.appendChild(expAmountValidationMsg);
             return false;
         }
         return true;
