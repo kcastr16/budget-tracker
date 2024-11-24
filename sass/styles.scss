@@ -2,7 +2,7 @@
 @import "./mixins";
 
 
-.main-budget {
+.main-display {
     background-color: $contColor ;
 }
 
@@ -22,6 +22,7 @@ header {
     margin-top: 10px;
     display: flex;
     justify-content: space-between;
+    background-color: $contColor ;
 
     button {
         font-family: $buttonFont;
