@@ -25,6 +25,7 @@ header {
     font-family: $textFont;
     margin-top: 10px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     background-color: $contColor ;
 
@@ -36,6 +37,8 @@ header {
 
         @include centerItems(center);
         @include boxBackground();
+        display: flex;
+        flex-wrap: wrap;
         
         h2 {
             margin: 0;

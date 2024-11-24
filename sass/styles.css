@@ -29,6 +29,7 @@ header {
   font-family: Host Grotesk;
   margin-top: 10px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   background-color: #e8e2df;
 }
@@ -45,6 +46,8 @@ header {
   border-radius: 5px;
   padding: 100px;
   margin: 20px;
+  display: flex;
+  flex-wrap: wrap;
 }
 .main-budget .user-income h2 {
   margin: 0;
