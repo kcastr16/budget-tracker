@@ -119,4 +119,14 @@ header {
   font-size: 1em;
   transform-origin: center;
   animation: expandFromMiddle 0.6s ease-out;
+}
+@keyframes expandFromMiddle {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }/*# sourceMappingURL=styles.css.map */
