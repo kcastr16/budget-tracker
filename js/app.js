@@ -80,7 +80,7 @@ function userExpenses() {
     function displayTotal() {
         budget.calculateBudget();
         let totalDisplay = document.getElementById('total-display');
-        totalDisplay.textContent = `Your Total: $${budget.getTotal().toFixed(2)}`;
+        totalDisplay.textContent =`Total: $${budget.getTotal().toFixed(2)}`;
     }
 
 
