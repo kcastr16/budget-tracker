@@ -71,4 +71,26 @@ header {
   color: red;
   background-color: rgba(255, 255, 255, 0.508);
   border-radius: 5px;
+}
+.main-budget #income-container div {
+  color: green;
+  background-color: #e8e2df;
+  padding: 0px 15px 0px 15px;
+  margin: 5px;
+  border-radius: 25px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1em;
+}
+.main-budget #expense-container div {
+  color: red;
+  background-color: #e8e2df;
+  padding: 0px 15px 0px 15px;
+  margin: 5px;
+  border-radius: 25px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1em;
 }/*# sourceMappingURL=styles.css.map */

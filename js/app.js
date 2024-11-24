@@ -118,7 +118,7 @@ function checkIncomeInput() {
     } else {
         let parsedInput = parseFloat(incomeAmountElement.value);
         if (isNaN(parsedInput)  || parsedInput <= 0) {
-            incNameValidationMsg.innerHTML = `<p>Please input a amount.</p>`
+            incNameValidationMsg.innerHTML = `<p>Please input a valid amount.</p>`
             incNameValidation.appendChild(incNameValidationMsg);
             return false;
         }
@@ -160,7 +160,7 @@ function checkExpenseInput() {
         let parsedInput = parseFloat(expenseAmountElement.value);
         if (isNaN(parsedInput) || parseFloat(expenseAmountElement.value) <= 0 ) {
             expAmountValidationMsg.innerHTML = `
-            <p>Please input a Valid Amount.</p> 
+            <p>Please input a valid Amount.</p> 
             `
             expAmountValidation.appendChild(expAmountValidationMsg);
             return false;

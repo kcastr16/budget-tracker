@@ -37,3 +37,27 @@
     background-color: rgba(255, 255, 255, 0.508);
     border-radius: 5px;
 }
+
+@mixin incomeColor {
+    color: green;
+    background-color: #e8e2df;
+    padding: 0px 15px 0px 15px;
+    margin: 5px;
+    border-radius: 25px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1em;
+}
+
+@mixin expenseColor {
+    color: red;
+    background-color: #e8e2df;
+    padding: 0px 15px 0px 15px;
+    margin: 5px;
+    border-radius: 25px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1em;
+}

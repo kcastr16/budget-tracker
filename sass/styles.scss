@@ -56,6 +56,16 @@ header {
         @include errorText();
     }
 
+    #income-container div {
+        @include incomeColor();
+    } 
+
+    #expense-container div {
+        @include expenseColor();
+    }
+
+
+
 
 }
 
