@@ -1,0 +1,80 @@
+@import "./variables";
+@import "./mixins";
+
+body {
+    @include gradient(left, $list1);
+}
+
+
+.main-display {
+    background-color: $contColor ;
+}
+
+header {
+
+    @include centerItems(center);
+
+    color: $primaryColor;
+    font-family: $headerFont;
+    background-color: $contColor;
+    border-radius: $borderRadius;
+    padding: $titlePadding;
+}
+
+.main-budget {
+    font-family: $textFont;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    background-color: $contColor ;
+
+    button {
+        font-family: $buttonFont;
+    }
+
+    .user-income {
+
+        @include centerItems(center);
+        @include boxBackground();
+        
+        h2 {
+            margin: 0;
+        }
+    }
+
+    .user-expenses {
+
+        @include centerItems(center);
+        @include boxBackground();
+        
+        h2{
+            margin: 0;
+        }
+    }
+
+    input {
+        @include inputStyle();
+        margin: 5px;
+    }
+
+    #validation-income, #validation-inc_number, #validation-exp_name, #validation-expense {
+        @include errorText();
+    }
+
+    #income-container div {
+        @include incomeColor();
+    } 
+
+    #expense-container div {
+        @include expenseColor();
+    }
+
+
+
+
+}
+
+
+
+
+
