@@ -75,6 +75,7 @@ header {
 
     #expense-container div {
         @include expenseColor();
+        @include animations();
         transform-origin: center;
         animation: expandFromMiddle 0.6s ease-out;
     }
