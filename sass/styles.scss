@@ -25,8 +25,10 @@ header {
     font-family: $textFont;
     margin-top: 10px;
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
     background-color: $contColor ;
+    border-radius: 5px;
 
     button {
         font-family: $buttonFont;
@@ -36,6 +38,8 @@ header {
 
         @include centerItems(center);
         @include boxBackground();
+        display: flex;
+        flex-wrap: wrap;
         
         h2 {
             margin: 0;
@@ -63,16 +67,32 @@ header {
 
     #income-container div {
         @include incomeColor();
+        transform-origin: center;
+        animation: expandFromMiddle 0.6s ease-out;
     } 
+
+    @keyframes expandFromMiddle {
+        0% {
+            transform: scale(0);
+            opacity: 0;
+        }
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+    
 
     #expense-container div {
         @include expenseColor();
+        transform-origin: center;
+        animation: expandFromMiddle 0.6s ease-out;
     }
-
-
-
-
 }
+
+
+
+
 
 
 

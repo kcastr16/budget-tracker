@@ -47,7 +47,7 @@
 
 @mixin incomeColor {
     color: green;
-    background-color: #e8e2df;
+    background-color: $itemColor;
     padding: 0px 15px 0px 15px;
     margin: 5px;
     border-radius: 25px;
@@ -59,7 +59,7 @@
 
 @mixin expenseColor {
     color: red;
-    background-color: #e8e2df;
+    background-color: $itemColor;
     padding: 0px 15px 0px 15px;
     margin: 5px;
     border-radius: 25px;
