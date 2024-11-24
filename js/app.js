@@ -85,8 +85,6 @@ function userExpenses() {
 
 
 
-//ALL THIS STUFF BELOW STAYS!!!
-
 //Validates user input for income. Even if edited with inspect, keeps user from adding values that are not appropriate.
 function checkIncomeInput() {
     const validation = document.getElementById('validation-income');
