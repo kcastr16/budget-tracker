@@ -28,6 +28,7 @@ header {
     flex-wrap: wrap;
     justify-content: space-evenly;
     background-color: $contColor ;
+    border-radius: 5px;
 
     button {
         font-family: $buttonFont;
@@ -72,6 +73,8 @@ header {
         @include expenseColor();
     }
 }
+
+
 
 
 

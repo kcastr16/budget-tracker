@@ -32,6 +32,7 @@ header {
   flex-wrap: wrap;
   justify-content: space-evenly;
   background-color: #e8e2df;
+  border-radius: 5px;
 }
 .main-budget button {
   font-family: Lexend Deca;
