@@ -1,3 +1,10 @@
+@import "./variables";
+
+@mixin gradient($direction, $list) {
+    background: -webkit-linear-gradient($direction, $list)
+}
+
+
 @mixin centerItems($direction) {
     display: flex;
     justify-content: center;

@@ -1,6 +1,10 @@
 @import "./variables";
 @import "./mixins";
 
+body {
+    @include gradient(left, $list1);
+}
+
 
 .main-display {
     background-color: $contColor ;
